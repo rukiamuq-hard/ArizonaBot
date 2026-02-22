@@ -37,4 +37,4 @@ C:\Users\YOUR_USER\OneDrive\Documents\GTA San Andreas User Files\SAMP\arizona\ch
 ```
 
 ## Если хотите поддержать
-[For UA donate](https://bletzorix.donatik.ua).
+[For UA donate](https://rukiamuq.donatik.ua/).
