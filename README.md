@@ -2,11 +2,11 @@
 
 ## Работа программы
 
-![See how is work](https://youtu.be/oFRIT2-5mSc)
+[Видео](https://youtu.be/oFRIT2-5mSc)
 
 **Сообщения приходящие в телеграмм**
 
-![Telegramm screenshot](https://mega.nz/file/0B8D1C5L#kwxi5T9iX8Am2XaJjpHljbS09PSbgHZU98RLkOkBlRk)
+[ТГ уведомления](https://mega.nz/file/0B8D1C5L#kwxi5T9iX8Am2XaJjpHljbS09PSbgHZU98RLkOkBlRk)
 
 **Скрипт на C++ для автоматизации взаимодействия в чате Аризоны РП. Отслеживает логи чата в реальном времени, отправляет уведомление в Telegram при обращении администратора и автоматически отвечает в игровой чат.**
 
