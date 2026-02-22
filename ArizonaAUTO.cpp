@@ -59,7 +59,6 @@ int main() {
 					keybd_event(VK_RETURN, 0, 0, 0);
 					keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0);
 				}
-				//C:\Users\phoen\OneDrive\Documents\GTA San Andreas User Files\SAMP\arizona\chatlog\save.txt
 				Sleep(200);
 				for (size_t i = 0; i < std::size(text) - 1; i++) {
 					ButtonEmulation(text[i]);
