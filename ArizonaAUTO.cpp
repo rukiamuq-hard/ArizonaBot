@@ -29,7 +29,7 @@ void ButtonEmulation(wchar_t text) {
 }
 
 void SendMsg(const wchar_t msgToFunc[]) {
-	//SixSevenSend();
+	SixSevenSend();
 	Sleep(rand() % 800);
 	for (size_t i = 0; i < 2; i++) {
 		keybd_event(VK_RETURN, 0, 0, 0);
