@@ -7,6 +7,11 @@
 #include <string>
 #include <Windows.h>
 #include <shellapi.h>
+#include <cstdlib>
+#include <ctime>
+#include <cwchar>
+
+#pragma comment(lib, "Shell32.lib")
 
 void SixSevenSend() {
 	system(
@@ -15,17 +20,33 @@ void SixSevenSend() {
 		"-Method POST -UseBasicParsing\""
 	);
 }
+
 void ButtonEmulation(wchar_t text) {
 		BYTE vkCode = VkKeyScanW(text);
 		keybd_event(vkCode, 0, 0, 0);
 		keybd_event(vkCode, 0, KEYEVENTF_KEYUP, 0);
-		Sleep(160);
+		Sleep(rand() % 300);
 }
 
+void SendMsg(const wchar_t msgToFunc[]) {
+	//SixSevenSend();
+	Sleep(rand() % 800);
+	for (size_t i = 0; i < 2; i++) {
+		keybd_event(VK_RETURN, 0, 0, 0);
+		keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0);
+	}
+	Sleep(rand() % 200);
+	for (size_t i = 0; i < std::wcslen(msgToFunc); i++) {
+		ButtonEmulation(msgToFunc[i]);
+	}
+	Sleep(rand() % 75);
+
+	keybd_event(VK_RETURN, 0, 0, 0);
+	keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0);
+}
 
 int main() {
-	
-
+	srand(0);
 
 	std::string path;
 	std::cout << "Enter path to chat log in active game: ";
@@ -49,25 +70,20 @@ int main() {
 
 	while (true) {
 		if (std::getline(file, fileOut)) {
-			if (fileOut.rfind(u8"(( Администратор") == std::string::npos) {}
-			else {
-				SixSevenSend();
-				Sleep(700);
-				wchar_t text[] = L"е.и спасибо";
-
-				for (size_t i = 0; i < 2; i++) {
-					keybd_event(VK_RETURN, 0, 0, 0);
-					keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0);
-				}
-				Sleep(200);
-				for (size_t i = 0; i < std::size(text) - 1; i++) {
-					ButtonEmulation(text[i]);
-				}
-				Sleep(80);
-
-				keybd_event(VK_RETURN, 0, 0, 0);
-				keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0);
+			if (fileOut.rfind(u8"(( Администратор") && fileOut.rfind(u8"Вы тут?") != std::string::npos || fileOut.rfind(u8"(( Администратор") && fileOut.rfind(u8"вы тут?") != std::string::npos) {
+				SendMsg(L"е.и да, я тут");
+			}	
+			else if(fileOut.rfind(u8"(( Администратор") && fileOut.rfind(u8"2 + 2 ?") != std::string::npos || fileOut.rfind(u8"(( Администратор") && fileOut.rfind(u8"2 + 2 = ?") != std::string::npos) {
+				Sleep(rand() % 800);
+				SendMsg(L"е4");
 			}
+			else if (fileOut.rfind(u8"(( Администратор") && fileOut.rfind(u8"Столица") != std::string::npos) {
+				SendMsg(L"е.и я не люблю географию");
+			}
+			else if (fileOut.rfind(u8"(( Администратор") && fileOut.rfind(u8"На каком вы сервере") != std::string::npos) {
+				SendMsg(L"е.и аризона");
+			}
+
 		}
 		else file.clear();
 	}
